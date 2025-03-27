@@ -1,0 +1,26 @@
+body {
+    background-color: rgb(50.2%, 50.2%, 50.2%);
+}
+
+body main {
+
+    display: flex;
+    justify-content: space-around;
+}
+
+#Activities_planned .category {
+    background-color: #bc3f49d8;
+    height: 40vh;
+    width: 45vw;
+    border-radius: 20px;
+
+}
+
+#Activity_goal_description .description {
+    background-color: pink;
+    height: 40vh;
+    width: 30vw;
+    border-radius: 20px;
+
+}
+
