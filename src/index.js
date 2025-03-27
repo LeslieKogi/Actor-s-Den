@@ -46,10 +46,15 @@ document.addEventListener("DOMContentLoaded", () => {
         activityItem.innerHTML = `
                 <strong>${activity.name}</strong>
                 Date:${activity.date}<br>
-                ${activity.description}`;
+                ${activity.description}
+                <button id="delete-btn">Delete</button>
+                <button id="edit-btn">Edit</button>`;
         activitiesList.appendChild(activityItem);
       });
+      const addButton=document.createElement('button')
+      addButton.textContent="Add+"
       categoryContainer.appendChild(activitiesList);
+      categoryContainer.appendChild(addButton);
 
       categoryMainConatiner.appendChild(categoryContainer);
     });
