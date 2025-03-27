@@ -8,7 +8,7 @@ body main {
     justify-content: space-around;
 }
 
-#Activities_planned .category {
+#Activities_planned .category-item {
     background-color: #bc3f49d8;
     height: 40vh;
     width: 45vw;
