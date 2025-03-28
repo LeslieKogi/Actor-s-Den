@@ -35,8 +35,50 @@
       "id": "ce8e",
       "name": "Voice manipulation",
       "date": "2025-04-15",
-      "description": "Trdjksn",
+      "description": "Strengthen vocal cords to improve voice acting",
       "categoryId": 1
+    },
+    {
+      "id": "0bd8",
+      "name": "Tounge Twisters",
+      "date": "2025-04-18",
+      "description": "Improve articulation and diction",
+      "categoryId": 1
+    },
+    {
+      "id": "d793",
+      "name": "Accent & Dialect Practice ",
+      "date": "2025-04-24",
+      "description": "Learn new speech patterns for roles.",
+      "categoryId": 2
+    },
+    {
+      "id": "a002",
+      "name": "Vocal Warm-Ups & Cool-Downs ",
+      "date": "2025-04-22",
+      "description": "Maintain vocal health and endurance.",
+      "categoryId": 2
+    },
+    {
+      "id": "fb08",
+      "name": "Cold Reading Drills",
+      "date": "2025-04-30",
+      "description": "Practice sight-reading new scripts with confidence.",
+      "categoryId": 3
+    },
+    {
+      "id": "84ad",
+      "name": "Improvised Scene Work",
+      "date": "2025-04-23",
+      "description": "Develop quick-thinking and adaptability on stage.",
+      "categoryId": 3
+    },
+    {
+      "id": "7e09",
+      "name": "Classical vs. Contemporary Scenes ",
+      "date": "2025-03-31",
+      "description": "Contrast acting styles between different periods.",
+      "categoryId": 3
     }
   ]
 }
