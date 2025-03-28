@@ -48,7 +48,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 Date:${activity.date}<br>
                 ${activity.description}
                 <button id="delete-btn">Delete</button>
-                <button id="edit-btn">Edit</button>`;
+                <button class="edit-btn">Edit</button>`;
         activitiesList.appendChild(activityItem);
 
         const deleteBtn=activityItem.querySelector('#delete-btn');
