@@ -8,7 +8,30 @@ body {
     background-attachment: fixed;
     height: 100vh;
 }
+/*edit input form */
+body main {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
 
+#Activities_planned {
+    flex: 2;
+}
+
+.form-container {
+    flex: 1;
+    display: none;
+    background-color: white;
+    padding: 1rem;
+    border-radius: 10px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+form label {
+    display: block;
+    margin-bottom: 0.5rem;
+}
 body main {
 
     display: flex;
@@ -41,7 +64,5 @@ nav {
     background-color: #333;
     color: white;
     position: relative;
-    border-radius: 19px;
-    
 }
 

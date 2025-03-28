@@ -1,77 +1,127 @@
 document.addEventListener("DOMContentLoaded", () => {
-  /*fetching categories */
-  let categories;
-  fetch("http://localhost:3000/categories")
-    .then((resp) => resp.json())
-    .then((cats) => {
-      categories = cats;
-      fetch("http://localhost:3000/activities")
+    let categories;
+    let activities = [];
+
+    fetch("http://localhost:3000/categories")
         .then((resp) => resp.json())
-        .then((activities) => {
-          placingCategories(cats, activities);
-          console.log("Activities:", activities);
-          console.log("Categories:", categories);
-          console.log("Activities:", activities);
-          console.log("First activity's categoryId:", activities[0].categoryId);
-          placingCategories(categories, activities);
-          return activities;
+        .then((cats) => {
+            categories = cats;
+            return fetch("http://localhost:3000/activities");
         })
+        .then((resp) => resp.json())
+        .then((data) => {
+            activities = data;
+            displayCategories(categories, activities);
+        })
+        .catch((error) => console.log("Error fetching data:", error));
 
-        .catch((error) => console.log("Error when fetching categories", error));
+    function displayCategories(categories, allActivities) {
+        const categoryContainer = document.querySelector("#Activities_planned");
+        categoryContainer.innerHTML = "";
+
+        categories.forEach((category) => {
+            const categoryDiv = document.createElement("div");
+            categoryDiv.className = "category-item";
+            categoryDiv.innerHTML = `<h3>${category.name}</h3>`;
+
+            const activityList = document.createElement("ul");
+
+            const categoryActivities = allActivities.filter(
+                (activity) => activity.categoryId == category.id
+            );
+
+            categoryActivities.forEach((activity) => {
+                const activityItem = document.createElement("li");
+                activityItem.innerHTML = `
+                    <strong>${activity.name}</strong> - ${activity.date}<br>
+                    ${activity.description}
+                    <button class="edit-btn" data-id="${activity.id}">Edit</button>
+                    <button class="delete-btn" data-id="${activity.id}">Delete</button>
+                `;
+
+                activityItem.querySelector(".edit-btn").addEventListener("click", () => openEditForm(activity));
+                activityItem.querySelector(".delete-btn").addEventListener("click", () => deleteActivity(activity.id));
+
+                activityList.appendChild(activityItem);
+            });
+
+            const addButton = document.createElement("button");
+            addButton.textContent = "Add+";
+            addButton.addEventListener("click", () => openAddForm(category.id));
+
+            categoryDiv.appendChild(activityList);
+            categoryDiv.appendChild(addButton);
+            categoryContainer.appendChild(categoryDiv);
+        });
+    }
+
+    function openEditForm(activity) {
+        document.querySelector("#edit-id").value = activity.id;
+        document.querySelector("#edit-name").value = activity.name;
+        document.querySelector("#edit-date").value = activity.date;
+        document.querySelector("#edit-description").value = activity.description;
+        document.querySelector("#editform").style.display = "block";
+    }
+
+    function openAddForm(categoryId) {
+        document.querySelector("#add-categoryId").value = categoryId;
+        document.querySelector("#addform").style.display = "block";
+    }
+
+    document.querySelector("#editform").addEventListener("submit", (e) => {
+        e.preventDefault();
+        const activityId = document.querySelector("#edit-id").value;
+        const updatedActivity = {
+            name: document.querySelector("#edit-name").value,
+            date: document.querySelector("#edit-date").value,
+            description: document.querySelector("#edit-description").value
+        };
+
+        fetch(`http://localhost:3000/activities/${activityId}`, {
+            method: "PATCH",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(updatedActivity)
+        })
+        .then((resp) => resp.json())
+        .then(() => {
+            document.querySelector("#editform").style.display = "none"; // 🔹 Hide form after submission
+            location.reload();
+        });
     });
 
-  function placingCategories(categories, allActivities) {
-    const categoryMainConatiner = document.querySelector("#Activities_planned");
-    categoryMainConatiner.innerHTML = "";
+    document.querySelector("#addform").addEventListener("submit", (e) => {
+        e.preventDefault();
+        const newActivity = {
+            name: document.querySelector("#add-name").value,
+            date: document.querySelector("#add-date").value,
+            description: document.querySelector("#add-description").value,
+            categoryId: parseInt(document.querySelector("#add-categoryId").value)
+        };
 
-    categories.forEach((category) => {
-      const categoryContainer = document.createElement("div");
-      categoryContainer.className = "category-item";
-
-      const categoryName = document.createElement("h3");
-      categoryName.textContent = category.name;
-
-      categoryContainer.appendChild(categoryName);
-      console.log("string123",allActivities)
-      /* find activities for this category*/
-      const categoryActivities = allActivities.filter(
-        (activity) => activity.categoryId == category.id
-      );
-      console.log(categoryActivities);
-      /*Creating list for activities */
-      const activitiesList = document.createElement("ul");
-
-      categoryActivities.forEach((activity) => {
-        const activityItem = document.createElement("li");
-        activityItem.innerHTML = `
-                <strong>${activity.name}</strong>
-                Date:${activity.date}<br>
-                ${activity.description}
-                <button id="delete-btn">Delete</button>
-                <button class="edit-btn">Edit</button>`;
-        activitiesList.appendChild(activityItem);
-
-        const deleteBtn=activityItem.querySelector('#delete-btn');
-        deleteBtn.addEventListener("click",()=>deleteActivity(activity.id,category.id));
-        
-
-      });
-      const addButton=document.createElement('button')
-      addButton.textContent="Add+"
-      categoryContainer.appendChild(activitiesList);
-      categoryContainer.appendChild(addButton);
-
-      categoryMainConatiner.appendChild(categoryContainer);
+        fetch("http://localhost:3000/activities", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(newActivity)
+        })
+        .then((resp) => resp.json())
+        .then(() => {
+            document.querySelector("#addform").style.display = "none"; // 🔹 Hide form after adding activity
+            location.reload();
+        });
     });
-  }
-function deleteActivity(activityId,categoryId){
-    fetch(`http://localhost:3000/activities/${activityId}`,{
-        method:"DELETE"
-    })
-    .then(resp=>resp.json())
-    .then(data=>{console.log(data)})
-    .catch(err=>{console.log(err)})
-}
 
+    function deleteActivity(activityId) {
+        fetch(`http://localhost:3000/activities/${activityId}`, {
+            method: "DELETE"
+        })
+        .then(() => location.reload());
+    }
 
+    // Cancel Button Functionalities
+    document.querySelectorAll(".cancel-btn").forEach((btn) => {
+        btn.addEventListener("click", () => {
+            document.querySelector("#editform").style.display = "none";
+            document.querySelector("#addform").style.display = "none";
+        });
+    });
 });

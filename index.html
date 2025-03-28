@@ -4,25 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Actor's Den April plan</title>
+    <title>Actor's Den April Plan</title>
     <link rel="stylesheet" href="css/main.css">
 </head>
 
 <body>
-    <form id="editform" class="modal">
-        <label>
-            <input type="text" value="Activity name">
-        </label>
-        <label>
-            <input type="date" value="date">
-        </label>
-        <label>
-            <input type="text" value="description">
-        </label>
-        <button type="submit">Save</button>
-        <button type="button" class="cancel-btn">Cancel</button>
 
-    </form>
+    <!--Navigation Bar -->
     <div id="navbar">
         <nav>
             <h1>ACTOR'S DEN</h1>
@@ -32,22 +20,48 @@
             </ul>
         </nav>
     </div>
+
+    <!-- Main Content -->
     <main>
-        <div id="Activities_planned">
- 
-        </div>
-        <div id="Activity_goal_description">
-            <div class="description">
-                <h4>description testing</h4>
-            </div>
-            <div class="description">
-                <h4>description testing</h4>
-            </div>
-            <div class="description">
-                <h4>description testing</h4>
-            </div>
-        </div>
+        <div id="Activities_planned"></div>
+
+        <!--  Edit Form  -->
+        <form id="editform" class="form-container">
+            <input type="hidden" id="edit-id">
+            <h3>Edit Activity</h3>
+            <label>Activity Name:
+                <input type="text" id="edit-name">
+            </label>
+            <label>Date:
+                <input type="date" id="edit-date">
+            </label>
+            <label>Description:
+                <input type="text" id="edit-description">
+            </label>
+            <button type="submit">Save</button>
+            <button type="button" class="cancel-btn">Cancel</button>
+        </form>
+
+        <!--  Add Activity Form -->
+        <form id="addform" class="form-container">
+            <h3>Add New Activity</h3>
+            <label>Activity Name:
+                <input type="text" id="add-name">
+            </label>
+            <label>Date:
+                <input type="date" id="add-date">
+            </label>
+            <label>Description:
+                <input type="text" id="add-description">
+            </label>
+            <label>Category ID:
+                <input type="number" id="add-categoryId">
+            </label>
+            <button type="submit">Add Activity</button>
+            <button type="button" class="cancel-btn">Cancel</button>
+        </form>
     </main>
+
     <script src="src/index.js"></script>
 </body>
 

@@ -19,7 +19,7 @@
   "activities": [
     {
       "id": "101",
-      "name": "Diaphragmatic Breathing",
+      "name": "Diaphragmatic Breathingg",
       "date": "2025-04-03",
       "description": "Practice deep breathing exercises for 30 minutes daily",
       "categoryId": 1
@@ -32,11 +32,11 @@
       "categoryId": 2
     },
     {
-      "id": "301",
-      "name": "Chekhov Scene Work",
-      "date": "2025-04-12",
-      "description": "Rehearse assigned Chekhov scene with scene partners",
-      "categoryId": 3
+      "id": "ce8e",
+      "name": "Voice manipulation",
+      "date": "2025-04-15",
+      "description": "Trdjksn",
+      "categoryId": 1
     }
   ]
 }
