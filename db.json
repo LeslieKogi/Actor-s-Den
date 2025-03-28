@@ -1,56 +1,49 @@
 {
-    "categories": [
-        {
-            "id": 1,
-            "name": "Voice Training",
-            "description": "Exercises to improve vocal projection, articulation, and breath control. Deadline: April 15"
-        },
-        {
-            "id": 2,
-            "name": "Movement",
-            "description": "Activities to enhance physical expression and stage presence. Deadline: April 20"
-        },
-        {
-            "id": 3,
-            "name": "Scene Study",
-            "description": "Analyzing and performing selected scenes from plays. Deadline: April 25"
-        }
-    ],
-    "activities": [
-        {
-            "id": 101,
-            "name": "Diaphragmatic Breathing",
-            "date": "2025-04-03",
-            "description": "Practice deep breathing exercises for 30 minutes daily",
-            "categoryId": 1
-        },
-        {
-            "id": 102,
-            "name": "Vocal Resonance",
-            "date": "2025-04-10",
-            "description": "Work on chest and head voice resonance with partner exercises",
-            "categoryId": 1
-        },
-        {
-            "id": 201,
-            "name": "Labon Movement",
-            "date": "2025-04-05",
-            "description": "Practice Laban's eight effort actions in pairs",
-            "categoryId": 2
-        },
-        {
-            "id": 301,
-            "name": "Chekhov Scene Work",
-            "date": "2025-04-12",
-            "description": "Rehearse assigned Chekhov scene with scene partners",
-            "categoryId": 3
-        },
-        {
-            "id": 302,
-            "name": "Contemporary Monologues",
-            "date": "2025-04-19",
-            "description": "Prepare and present 2-minute contemporary monologue",
-            "categoryId": 3
-        }
-    ]
+  "categories": [
+    {
+      "id": "1",
+      "name": "Voice Training",
+      "description": "Exercises to improve vocal projection, articulation, and breath control. Deadline: April 15"
+    },
+    {
+      "id": "2",
+      "name": "Movement",
+      "description": "Activities to enhance physical expression and stage presence. Deadline: April 20"
+    },
+    {
+      "id": "3",
+      "name": "Scene Study",
+      "description": "Analyzing and performing selected scenes from plays. Deadline: April 25"
+    }
+  ],
+  "activities": [
+    {
+      "id": "101",
+      "name": "Diaphragmatic Breathing",
+      "date": "2025-04-03",
+      "description": "Practice deep breathing exercises for 30 minutes daily",
+      "categoryId": 1
+    },
+    {
+      "id": "201",
+      "name": "Labon Movement",
+      "date": "2025-04-05",
+      "description": "Practice Laban's eight effort actions in pairs",
+      "categoryId": 2
+    },
+    {
+      "id": "301",
+      "name": "Chekhov Scene Work",
+      "date": "2025-04-12",
+      "description": "Rehearse assigned Chekhov scene with scene partners",
+      "categoryId": 3
+    },
+    {
+      "id": "302",
+      "name": "Contemporary Monologues",
+      "date": "2025-04-19",
+      "description": "Prepare and present 2-minute contemporary monologue",
+      "categoryId": 3
+    }
+  ]
 }

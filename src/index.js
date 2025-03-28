@@ -50,6 +50,11 @@ document.addEventListener("DOMContentLoaded", () => {
                 <button id="delete-btn">Delete</button>
                 <button id="edit-btn">Edit</button>`;
         activitiesList.appendChild(activityItem);
+
+        const deleteBtn=activityItem.querySelector('#delete-btn');
+        deleteBtn.addEventListener("click",()=>deleteActivity(activity.id,category.id));
+        
+
       });
       const addButton=document.createElement('button')
       addButton.textContent="Add+"
@@ -59,4 +64,14 @@ document.addEventListener("DOMContentLoaded", () => {
       categoryMainConatiner.appendChild(categoryContainer);
     });
   }
+function deleteActivity(activityId,categoryId){
+    fetch(`http://localhost:3000/activities/${activityId}`,{
+        method:"DELETE"
+    })
+    .then(resp=>resp.json())
+    .then(data=>{console.log(data)})
+    .catch(err=>{console.log(err)})
+}
+
+
 });
