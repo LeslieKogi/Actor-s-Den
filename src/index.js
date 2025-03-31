@@ -84,7 +84,7 @@ document.addEventListener("DOMContentLoaded", () => {
         })
         .then((resp) => resp.json())
         .then(() => {
-            document.querySelector("#editform").style.display = "none"; // 🔹 Hide form after submission
+            document.querySelector("#editform").style.display = "none"; 
             location.reload();
         });
     });
@@ -105,7 +105,7 @@ document.addEventListener("DOMContentLoaded", () => {
         })
         .then((resp) => resp.json())
         .then(() => {
-            document.querySelector("#addform").style.display = "none"; // 🔹 Hide form after adding activity
+            document.querySelector("#addform").style.display = "none"; 
             location.reload();
         });
     });
