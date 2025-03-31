@@ -116,8 +116,6 @@ document.addEventListener("DOMContentLoaded", () => {
         })
         .then(() => location.reload());
     }
-
-    // Cancel Button Functionalities
     document.querySelectorAll(".cancel-btn").forEach((btn) => {
         btn.addEventListener("click", () => {
             document.querySelector("#editform").style.display = "none";
